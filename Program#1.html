@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Program Quad of Colors</title>
+</head>
+<style>
+    #mycanvas{
+        width: 90%;
+        height: 90%;
+        border: 4px solid black;
+    }
+</style>
+<body style="background-color:#e9e9e9;">
+    <canvas id="mycanvas"> </canvas>
+</body>
+
+<script>
+    var canvas = document.getElementById('mycanvas'); 
+    var ctx = canvas.getContext('2d');
+    
+    ctx.fillStyle = "rgba(31,231,255, 0.5)";
+    ctx.fillRect (10, 10, 50, 50);
+     
+    ctx.fillStyle = "rgba(230,25,246, 0.5)";
+    ctx.fillRect (40, 50, 50, 50);
+
+    ctx.fillStyle = "rgb(171, 171, 171, 0.5)";
+    ctx.fillRect (70, 88, 50, 50);
+</script>
+
+</html>
