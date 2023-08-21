@@ -8,9 +8,10 @@
 </head>
 <style>
     #mycanvas{
-        width: 99%;
-        height: 99%;
-        border: 4px solid black;
+        width: 2500px;
+        height: 1400px;
+        border: 2px solid black;
+        
     }
 </style>
 <body style="background-color:#ffffff;">
@@ -21,14 +22,26 @@
     var canvas = document.getElementById('mycanvas'); 
     var ctx = canvas.getContext('2d');
     
-    ctx.fillStyle = "rgba(31,231,255, 0.5)";
+    ctx.fillStyle = "rgb(31,231,255, 0.5)";
     ctx.fillRect (10, 10, 50, 50);
      
-    ctx.fillStyle = "rgba(230,25,246, 0.5)";
+    ctx.fillStyle = "rgb(230,25,246, 0.5)";
     ctx.fillRect (40, 50, 50, 50);
 
     ctx.fillStyle = "rgb(171, 171, 171, 0.5)";
     ctx.fillRect (70, 88, 50, 50);
+    
+    //TEXT
+    ctx.beginPath();
+    ctx.fillStyle = "white";
+    ctx.font = "16px Times New Roman";
+    ctx.fillText("Wena noshe", 200, 40);
+        
+    ctx.stroke = "black";
+    ctx.font = "16px Times New Roman";
+    ctx.strokeText("Wena noshe", 200, 40);
+    ctx.closePath();
+    
 </script>
 
 </html>
