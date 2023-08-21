@@ -44,16 +44,30 @@
 
     //GRADIENT
     ctx.beginPath();
-    const gradient = ctx.createLinearGradient(120, 175, 80, 80);
+    const gradient = ctx.createLinearGradient(60, 170, 40, 120);
 
     gradient.addColorStop(0, "green");
     gradient.addColorStop(.5, "purple");
     gradient.addColorStop(1, "blue");
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(190, 50, 100, 50);
+    ctx.fillRect(190, 45, 100, 50);
     ctx.closePath();
-    
+
+    //GRADIENT 2
+    ctx.beginPath();
+    const gradient2 = ctx.createRadialGradient(230, 120, 20, 260, 130, 100);
+
+    gradient2.addColorStop(0, "purple");
+    gradient2.addColorStop(0.5, "blue");
+    gradient2.addColorStop(1, "green");
+
+    ctx.fillStyle = gradient2;
+    ctx.fillRect(190, 98, 100, 50);
+    ctx.closePath();
+
+
+
 </script>
 
 </html>
