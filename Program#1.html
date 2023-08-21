@@ -11,7 +11,7 @@
         width: 2500px;
         height: 1400px;
         border: 2px solid black;
-        
+        background-color: aliceblue;
     }
 </style>
 <body style="background-color:#ffffff;">
@@ -40,6 +40,18 @@
     ctx.stroke = "black";
     ctx.font = "16px Times New Roman";
     ctx.strokeText("Wena noshe", 200, 40);
+    ctx.closePath();
+
+    //GRADIENT
+    ctx.beginPath();
+    const gradient = ctx.createLinearGradient(120, 175, 80, 80);
+
+    gradient.addColorStop(0, "green");
+    gradient.addColorStop(.5, "purple");
+    gradient.addColorStop(1, "blue");
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(190, 50, 100, 50);
     ctx.closePath();
     
 </script>
