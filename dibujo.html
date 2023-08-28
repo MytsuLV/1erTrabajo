@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #mycanvas{
+        border: 4px, solid rgb(255, 255, 255);
+    }
+</style>
+<body style = "background-color: rgb(37, 37, 37)  ;">
+    <center><canvas id = "mycanvas" width = "600" height = "600" style = "background-color: lightskyblue;"></canvas></center>
+</body>
+<script>
+    var canvas = document.getElementById('mycanvas');
+    var ctx = canvas.getContext('2d');
+
+
+    //arbol
+    ctx.fillStyle = "#562f0e";
+    ctx.fillRect (80, 80, 75, 500);
+
+    ctx.fillStyle = "rgb(65, 255, 60)";
+    ctx.fillRect (0, 0, 300, 150);
+
+    //pasto
+    ctx.fillStyle = "rgb(65, 255, 60)";
+    ctx.fillRect (0, 400, 600, 600);
+
+    //cabeza
+    ctx.fillStyle = "rgb(250, 173, 122)";
+    ctx.fillRect (340, 160, 100, 100);
+
+    //cabello
+    ctx.fillStyle = "#562f0e";
+    ctx.fillRect (340, 160, 100, 30);
+
+    ctx.fillStyle = "#562f0e";
+    ctx.fillRect (340, 160, 15, 50);
+
+    ctx.fillStyle = "#562f0e";
+    ctx.fillRect (425, 160, 15, 50);
+
+    //ojos
+    ctx.fillStyle = "blue";
+    ctx.fillRect (370, 210, 15, 15);
+    ctx.fillStyle = "white";
+    ctx.fillRect (355, 210, 15, 15);
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect (410, 210, 15, 15);
+    ctx.fillStyle = "white";
+    ctx.fillRect (395, 210, 15, 15);
+
+    //boca
+    ctx.fillStyle = "black";
+    ctx.fillRect (370, 235, 8, 8);
+
+    ctx.fillStyle = "black";
+    ctx.fillRect (378, 243, 8, 8);
+
+    ctx.fillStyle = "black";
+    ctx.fillRect (386, 243, 8, 8);
+
+    ctx.fillStyle = "black";
+    ctx.fillRect (394, 243, 8, 8);
+
+    ctx.fillStyle = "black";
+    ctx.fillRect (402, 243, 8, 8);
+
+    //cuerpo
+
+    ctx.fillStyle = "aquamarine";
+    ctx.fillRect (340, 260, 100, 140);
+
+    //hombros
+    
+    ctx.fillStyle = "aquamarine";
+    ctx.fillRect (290, 260, 50, 50);
+
+    ctx.fillStyle = "aquamarine";
+    ctx.fillRect (440, 260, 50, 50);
+
+
+    //brazos
+    ctx.fillStyle = "rgb(250, 173, 122)";
+    ctx.fillRect (290, 310, 50, 90);
+
+    ctx.fillStyle = "rgb(250, 173, 122)";
+    ctx.fillRect (440, 310, 50, 90);
+
+
+
+    //piernas
+    ctx.fillStyle = "blue";
+    ctx.fillRect (340, 400, 100, 140);
+    
+    ctx.fillStyle = "black";
+    ctx.fillRect (390, 400, 1, 140);
+
+    
+    
+    
+</script>
+</html>
