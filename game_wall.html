@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameColors</title>
+</head>
+
+<style>
+    #game-canvas{
+        border: 2px solid black;
+        background-color: aliceblue;
+    }
+
+    #score {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+
+<center><body style = "background-color: rgb(88, 88, 88);">
+    <canvas id="game-canvas" width="800" height="800"></canvas>
+    <div id="score">Score: 0</div>
+    <script>
+        const canvas = document.getElementById("game-canvas");
+        const ctx = canvas.getContext("2d");
+
+        let playerX = 0;
+        let playerY = 0;
+        let targetX = 200;
+        let targetY = 200;
+        let playerSpeed = 40;
+        let score = 0;
+
+        const wallX = 200;
+        const wallY = 400;
+        const wallWidth = 450;
+        const wallHeight = 80;
+
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r},${g},${b})`;
+        }
+
+        function drawPlayer() {
+            ctx.fillStyle = getRandomColor();
+            ctx.fillRect(playerX, playerY, 40, 40);
+        }
+
+        function movePlayer(event) {
+            switch (event.key) {
+                case "ArrowLeft":
+                    playerX -= playerSpeed;
+                    break;
+                case "ArrowRight":
+                    playerX += playerSpeed;
+                    break;
+                case "ArrowUp":
+                    playerY -= playerSpeed;
+                    break;
+                case "ArrowDown":
+                    playerY += playerSpeed;
+                    break;
+            }
+
+            if (playerX < 0) {
+                playerX = canvasWidth;
+            } else if (playerX > canvasWidth) {
+                playerX = 0;
+            }
+
+            if (playerY < 0) {
+                playerY = canvasHeight;
+            } else if (playerY > canvasHeight) {
+                playerY = 0;
+            }
+
+            checkCollision();
+        }
+
+        function checkCollision() {
+            if (
+                playerX < targetX + 40 &&
+                playerX + 40 > targetX &&
+                playerY < targetY + 40 &&
+                playerY + 40 > targetY
+            ) {
+                targetX = Math.random() * (canvasWidth - 40);
+                targetY = Math.random() * (canvasHeight - 40);
+                increaseScore();
+            }
+
+            if (
+                playerX < wallX + wallWidth &&
+                playerX + 40 > wallX &&
+                playerY < wallY + wallHeight &&
+                playerY + 40 > wallY
+            ) {
+                playerX = Math.min(playerX, wallX - 40);
+                playerY = Math.min(playerY, wallY - 40);
+                playerX = Math.max(playerX, wallX + wallWidth);
+                playerY = Math.max(playerY, wallY + wallHeight);
+            }
+        }
+
+        function increaseScore() {
+            score++;
+            document.getElementById("score").textContent = `Score: ${score}`;
+        }
+
+        function drawTarget() {
+            ctx.fillStyle = "red";
+            ctx.fillRect(targetX, targetY, 40, 40);
+        }
+
+        function drawWall() {
+            ctx.fillStyle = "gray";
+            ctx.fillRect(wallX, wallY, wallWidth, wallHeight);
+        }
+
+        window.addEventListener("keydown", movePlayer);
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Limpia el lienzo
+            drawWall(); // Dibuja la pared
+            drawPlayer(); // Dibuja al jugador
+            drawTarget(); // Dibuja el objetivo
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body></center>
+</html>
