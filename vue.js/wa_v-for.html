@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <h1>Hola {{ message }}</h1>
+        <input v-model="message" placeholder="nombre" /><br><br>
+
+        <button @click="count++">Count is: {{ count }}</button><br><br>
+
+        <p>Suma de 2 números</p>
+        <input v-model.number="num1" placeholder="" /><br>
+        <input v-model.number="num2" placeholder="" />
+
+        <button @click="result = num1 + num2">Suma</button>
+
+        <h3>Resultado: {{ result }}</h3>
+
+        <p>_______________________________________________________________________________________________</p>
+
+        <ul>
+          <li v-for="(item, index) in arrayNombres" :key="index">
+              {{ item.nombreInput }} {{ item.apellidoInput }}
+          </li>
+        </ul>
+
+        <p>Nombre(s)</p>
+        <input v-model="nombre" placeholder="Nombre" /><br>
+        <p>Apellido(s)</p>
+        <input v-model="apellido" placeholder="Apellido" /><br><br>
+        <button @click="addName">Agregar</button>
+
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        const { ref } = Vue;
+
+        const app = createApp({
+            data() {
+                const count = ref(0);
+                const message = ref('');
+                const num1 = ref('');
+                const num2 = ref('');
+                const result = ref(0);
+
+                const nombre = ref('');
+                const apellido = ref('');
+                const arrayNombres = ref([]);
+
+                const addName = () => {
+                    if (nombre.value && apellido.value) {
+                        arrayNombres.value.push({
+                            nombreInput: nombre.value,
+                            apellidoInput: apellido.value
+                        });
+                        nombre.value = '';
+                        apellido.value = '';
+                    }
+                };
+
+                return {
+                    count,
+                    message,
+                    num1,
+                    num2,
+                    result,
+                    nombre,
+                    apellido,
+                    arrayNombres,
+                    addName
+                };
+            },
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
